@@ -26,7 +26,7 @@ function App() {
     <div className="container">
       <h1>Zoek richtlijn</h1>
       <Header />
-      <Tasks tasks={tasks}/>
+      <Tasks task_list={tasks}/>
     </div>  
   );
 }
