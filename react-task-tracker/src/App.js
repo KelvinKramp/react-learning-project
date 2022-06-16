@@ -22,11 +22,15 @@ function App() {
     }
    ])
 
+  const deleteTask = (id) => {
+    console.log('delete', id)
+  }
+
   return (
     <div className="container">
       <h1>Zoek richtlijn</h1>
       <Header />
-      <Tasks task_list={tasks}/>
+      <Tasks task_list={tasks} onDelete={deleteTask}/>
     </div>  
   );
 }
