@@ -15,10 +15,11 @@ export const Task = (props) => {
     // console.log((task.reminder ? 'reminder': 'task'))
     return (
         <div 
+        // DONT DO THIS: className={`task $(task.reminder && 'reminder')`} -> USE CURLY BRACES
         className={`task ${task.reminder && 'reminder'}`}
-         onDoubleClick = {() => onToggle(id) } >
+        onDoubleClick = {() => onToggle(id) } >
     <IconContext.Provider value={{ size: '70px', cursor: 'pointer' }}>
-        <h3>{text} <FaTimes onClick={() => onDelete(id)} /> <BsEmojiHeartEyes /> <BsEmojiSmile /><BsEmojiNeutral /><BsEmojiDizzy /></h3>
+        <h3>{text} <FaTimes onClick={() => onDelete(id)} /> </h3>
         <p>{recept}</p>
     </IconContext.Provider>
         </div >

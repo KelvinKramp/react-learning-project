@@ -6,9 +6,6 @@ export const AddTask = (prop) => {
     const [date, setDate] = useState('')
     const [reminder, setReminder] = useState(false)
 
-    const seeSomething = (e) => {
-        setReminder(!e.currentTarget.checked)
-    }
 
     const onSubmit = (e) => {
         // IF NO INPUT SHOW ERROR
@@ -46,9 +43,12 @@ export const AddTask = (prop) => {
             </div>
             <div className='form-control form-control-check'>
                 <label>Set Reminder</label>
-                <input type='checkbox' placeholder="set reminder" value={reminder} 
-                onChange={(e) => seeSomething(e)} 
-                checked={reminder}/>
+                <input
+                type='checkbox'
+                checked={reminder}
+                value={reminder}
+                onChange={(e) => setReminder(e.currentTarget.checked)}
+                />
             </div>
 
             <input type='submit' value='Save Task' className='btn btn-block' />

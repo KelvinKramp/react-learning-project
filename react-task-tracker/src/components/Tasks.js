@@ -15,7 +15,7 @@ export const Tasks = (props) => {
     return (
         <>
             {task_list.map((to_show_task) => (
-                <Task key={to_show_task.id} task={to_show_task} onDelete={onDelete} onToggle={() => onToggle(to_show_task.id)}/>
+                <Task key={to_show_task.id} task={to_show_task} onDelete={onDelete} onToggle={onToggle}/>
             ))}
         </>
 
