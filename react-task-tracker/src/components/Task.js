@@ -1,5 +1,4 @@
 import { FaTimes } from "react-icons/fa";
-import { BsEmojiNeutral, BsEmojiDizzy, BsEmojiSmile, BsEmojiHeartEyes } from "react-icons/bs";
 import { IconContext } from 'react-icons'
 
 export const Task = (props) => {

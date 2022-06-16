@@ -23,6 +23,8 @@ function App() {
     }
   ])
 
+  const [showAddTask, setShowAddTask] =  useState(false)
+
   const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id))
   }
@@ -46,8 +48,8 @@ function App() {
   return (
     <div className="container">
       <h1>Zoek richtlijn</h1>
-      <Header/>
-      <AddTask addTask={addTask}/>
+      <Header onAdd={()=>setShowAddTask(!showAddTask)}/>
+      {showAddTask && <AddTask addTask={addTask}/>}
       {tasks.length > 0 ? (
         <Tasks task_list={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
       ) : ("No task to show")}
@@ -60,7 +62,7 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-  title: PropTypes.string
+  dr: PropTypes.string
 }
 
 export default App;
