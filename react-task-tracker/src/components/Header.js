@@ -1,7 +1,10 @@
 import { Button } from "./Button"
 
-const Header = ({ dr, onAdd, showAdd }) => {
-
+const Header = ({ dr, onAdd, showAddTask }) => {
+    console.log("HEADER")
+    console.log(dr)
+    console.log(onAdd)
+    console.log(showAddTask)
     // const doSomething = () => {
     //     console.log(onAdd)
     //     console.log("asdsa")
@@ -10,7 +13,7 @@ const Header = ({ dr, onAdd, showAdd }) => {
     return (
         <header>
             <h1>Hello {dr}</h1>
-            <Button text='Toevoegen' onClick={onAdd} />
+            <Button text={showAddTask ? 'Sluiten' : 'Toevoegen taak'} onClick={onAdd} color={showAddTask ? 'red' : 'green'} />
             <Button color='green' text='Zoeken' />
         </header>
     )

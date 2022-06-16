@@ -48,7 +48,7 @@ function App() {
   return (
     <div className="container">
       <h1>Zoek richtlijn</h1>
-      <Header onAdd={()=>setShowAddTask(!showAddTask)}/>
+      <Header onAdd={()=>setShowAddTask(!showAddTask)} showAddTask={showAddTask}/>
       {showAddTask && <AddTask addTask={addTask}/>}
       {tasks.length > 0 ? (
         <Tasks task_list={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
