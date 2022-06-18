@@ -1,9 +1,6 @@
 import Proptypes from 'prop-types'
-import { ThemeUpdateContext } from './Context'
-import { useContext } from 'react'
 
-export const Button = ({color, text}) => {
-  const { onAdd } = useContext(ThemeUpdateContext)
+export const Button = ({onAdd, color, text}) => {
 
     return (
         <button
