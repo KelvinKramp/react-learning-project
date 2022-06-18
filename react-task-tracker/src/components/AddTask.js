@@ -1,8 +1,7 @@
 import { useState, useContext } from "react"
-import { ThemeContext, ThemeUpdateContext } from './Context'
+import { ThemeUpdateContext } from './Context'
 
 export const AddTask = () => {
-    const { tasks } = useContext(ThemeContext)
     const { addTask } = useContext(ThemeUpdateContext)
     const [text, setText] = useState('')
     const [recept, setRecept] = useState('')

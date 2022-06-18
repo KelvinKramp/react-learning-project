@@ -1,5 +1,5 @@
 ##!/bin/sh
 
 git add .
-git commit -am "use useContext to pass variables"
+git commit -am "refactoring props"
 git push -u origin main

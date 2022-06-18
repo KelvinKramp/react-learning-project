@@ -1,11 +1,13 @@
 import Proptypes from 'prop-types'
+import { ThemeUpdateContext } from './Context'
+import { useContext } from 'react'
 
-export const Button = ({color, text, onClick}) => {
-
+export const Button = ({color, text}) => {
+  const { onAdd } = useContext(ThemeUpdateContext)
 
     return (
         <button
-        onClick={onClick}
+        onClick={onAdd}
         style={{ backgroundColor: color }}
         className='btn'
       >
