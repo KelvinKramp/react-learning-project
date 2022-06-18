@@ -1,53 +1,63 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { ThemeContext, ThemeUpdateContext } from './Context'
 
-export const AddTask = (prop) => {
-    const addTask = prop.addTask
+export const AddTask = () => {
+    const { tasks } = useContext(ThemeContext)
+    const { addTask } = useContext(ThemeUpdateContext)
     const [text, setText] = useState('')
-    const [date, setDate] = useState('')
+    const [recept, setRecept] = useState('')
     const [reminder, setReminder] = useState(false)
-
+    // const addTask = (task) => {
+    //     const id = Math.floor(Math.random() * 10000) + 1
+    //     console.log("ADD TASK")
+    //     console.log("ID")
+    //     console.log(id)
+    //     const newTask = {id, ...task}
+    //     setTasks([...tasks, newTask])
+    //     console.log(task)
+    //   }
 
     const onSubmit = (e) => {
         // IF NO INPUT SHOW ERROR
         e.preventDefault()
 
-        // IF TEXT ADD TEXt
-        if(!text) {
+        // IF TEXT ADD TEXT
+        if (!text) {
             alert('Please add text')
             return
         }
-        console.log("VARIABLES")
-        console.log(text)
-        console.log(typeof text)
-        console.log(date)
-        console.log(typeof date)
-        console.log(reminder)
-        console.log(typeof reminder)
-        addTask({text, date, reminder})
-        
+        addTask({ text, recept, reminder })
+        // console.log("VARIABLES")
+        // console.log(text)
+        // console.log(typeof text)
+        // console.log(recept)
+        // console.log(typeof recept)
+        // console.log(reminder)
+        // console.log(typeof reminder)
+
         // CLEAR FORM
         setText('')
-        setDate('')
+        setRecept('')
         setReminder(false)
     }
 
     return (
         <form className='add-form' onSubmit={onSubmit}>
             <div className='form-control'>
-                <label>Task</label>
+                <label>Richtlijn</label>
                 <input type='text' placeholder="add task" value={text} onChange={(e) => setText(e.target.value)} />
             </div>
             <div className='form-control'>
-                <label>Day & Time</label>
-                <input type='text' placeholder="add day and time" value={date} onChange={(e) => setDate(e.target.value)} />
+                <label>Recept</label>
+                <input type='text' placeholder="add day and time" value={recept} onChange={(e) => setRecept(e.target.value)} />
             </div>
             <div className='form-control form-control-check'>
-                <label>Set Reminder</label>
+                <label>Gecontroleerd</label>
                 <input
-                type='checkbox'
-                checked={reminder}
-                value={reminder}
-                onChange={(e) => setReminder(e.currentTarget.checked)}
+                    type='checkbox'
+                    checked={reminder}
+                    value={reminder}
+                    onChange={(e) => setReminder(e.currentTarget.checked)}
                 />
             </div>
 

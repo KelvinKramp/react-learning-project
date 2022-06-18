@@ -1,11 +1,10 @@
 import './App.css';
 import PropTypes from 'prop-types'
 import Header from './components/Header'
+import { AddTask } from './components/AddTask';
 import { Tasks } from './components/Tasks';
 import { useState } from 'react';
-import { AddTask  } from './components/AddTask';
-
-
+import { ThemeContext, ThemeUpdateContext } from './components/Context'
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -23,7 +22,17 @@ function App() {
     }
   ])
 
-  const [showAddTask, setShowAddTask] =  useState(false)
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1
+    console.log("ADD TASK")
+    console.log("ID")
+    console.log(id)
+    const newTask = { id, ...task }
+    setTasks([...tasks, newTask])
+    console.log(task)
+  }
+
+  const [showAddTask, setShowAddTask] = useState(false)
 
   const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id))
@@ -31,32 +40,31 @@ function App() {
 
   const toggleReminder = (id) => {
     console.log(id)
-    setTasks(tasks.map(task => task.id === id ? {...task, reminder: !task.reminder} : task))
+    setTasks(tasks.map(task => task.id === id ? { ...task, reminder: !task.reminder } : task))
     // console.log(tasks.filter(task => task.id === id? console.log(task.reminder) : ""))
-  } 
-
-  const addTask = (task) => {
-    const id = Math.floor(Math.random() * 10000) + 1
-    console.log("ID")
-    console.log(id)
-    const newTask = {id, ...task}
-    setTasks([...tasks, newTask])
-    console.log(task)
   }
 
 
+
+
   return (
-    <div className="container">
-      <h1>Zoek richtlijn</h1>
-      <Header onAdd={()=>setShowAddTask(!showAddTask)} showAddTask={showAddTask}/>
-      {showAddTask && <AddTask addTask={addTask}/>}
-      {tasks.length > 0 ? (
-        <Tasks task_list={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
-      ) : ("No task to show")}
-    </div>
+    <ThemeContext.Provider value={{ tasks }}>
+      <ThemeUpdateContext.Provider value={{ addTask }}>
+        {
+          <div className="container">
+            <Header onAdd={() => setShowAddTask(!showAddTask)} showAddTask={showAddTask} />
+            {showAddTask && <AddTask />}
+            {tasks.length > 0 ? (
+              <Tasks task_list={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+            ) : ("No task to show")}
+          </div>
+        }
+      </ThemeUpdateContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 
+// Proptypes
 Header.defaultProps = {
   dr: "dr. Stoned"
 }

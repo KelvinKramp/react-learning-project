@@ -13,8 +13,9 @@ const Header = ({ dr, onAdd, showAddTask }) => {
     return (
         <header>
             <h1>Hello {dr}</h1>
-            <Button text={showAddTask ? 'Sluiten' : 'Toevoegen taak'} onClick={onAdd} color={showAddTask ? 'red' : 'green'} />
-            <Button color='green' text='Zoeken' />
+            <h1>Zoek richtlijn</h1>
+            <Button text={showAddTask ? 'Sluiten' : 'Toevoegen richtlijn'} onClick={onAdd} color={showAddTask ? 'red' : 'green'} />
+            <Button color='darkgrey' text='Zoek richtlijn' />
         </header>
     )
 
