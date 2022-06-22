@@ -1,5 +1,5 @@
 ##!/bin/sh
 
 git add .
-git commit -am "button zoeken disable"
+git commit -am "start graphql"
 git push -u origin main
