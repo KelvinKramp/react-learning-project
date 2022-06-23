@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-const GET_WEATHER = gql`
+export const GET_WEATHER = gql`
     query getCityByName($name: String!) {
                 getCityByName(name: $name) {
                 name
@@ -13,5 +13,3 @@ const GET_WEATHER = gql`
             }
             }
 `
-
-export default GET_WEATHER
