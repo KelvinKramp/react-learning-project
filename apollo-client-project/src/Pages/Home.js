@@ -24,9 +24,9 @@ function Home() {
             {data &&
             (
                 <>
-                <h1>Place:</h1>
-                <h1>Rain</h1>
-                <h1>Temp</h1>
+                <h1>Place: {data.getCityByName.name}</h1>
+                <h1>humidity: {data.getCityByName.weather.clouds.humidity} </h1>
+                <h1>Minimum temperature: {data.getCityByName.weather.temperature.min}</h1>
                 </>
             )
             }
